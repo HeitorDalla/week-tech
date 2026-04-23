@@ -16,7 +16,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tech Week"
+        android:text="Week Tech"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/black"
