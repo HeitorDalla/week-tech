@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="primary">#1A73E8</color> <!-- Azul Suave -->
+    <color name="primary_variant">#1557B0</color> <!-- Azul Escuro -->
+    <color name="secondary">#FBBC04</color> <!-- Amarelo (Destaques) -->
+    <color name="background">#F8F9FA</color> <!-- Branco Acinzentado (Fundo) -->
+    <color name="surface">#FFFFFF</color> <!-- Branco (Cards) -->
+    <color name="black">#202124</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray_text">#5F6368</color>
 </resources>

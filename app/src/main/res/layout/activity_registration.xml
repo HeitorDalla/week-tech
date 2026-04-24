@@ -1,106 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Tela de Cadastro de Participante/Visitante (RF02).
-    Inclui opção de Coffee Break (RF08).
+    Inclui opção de Coffee Break (RF08) e Cadastro de Projetos (RF09).
 -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    tools:context=".RegistrationActivity">
+    android:background="@color/background">
 
-    <TextView
-        android:id="@+id/tvRegTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inscrição de Participante"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Campo: Nome (RF02) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="Nome Completo"
-        app:layout_constraintTop_toBottomOf="@id/tvRegTitle">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etName"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tvRegTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inscrição de Participante"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Campos de Identificação (RF02) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="24dp"
+            android:hint="Nome Completo"
+            app:layout_constraintTop_toBottomOf="@id/tvRegTitle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Campo: RA (RF02) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilRA"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="RA (Registro Acadêmico)"
-        app:layout_constraintTop_toBottomOf="@id/tilName">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etRA"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRA"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="12dp"
+            android:hint="RA (Registro Acadêmico)"
+            app:layout_constraintTop_toBottomOf="@id/tilName">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Campo: Curso (RF02) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilCourse"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Curso"
-        app:layout_constraintTop_toBottomOf="@id/tilRA">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etCourse"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCourse"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="12dp"
+            android:hint="Curso"
+            app:layout_constraintTop_toBottomOf="@id/tilRA">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Campo: Série (RF02) -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilGrade"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Série/Ano"
-        app:layout_constraintTop_toBottomOf="@id/tilCourse">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etGrade"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilGrade"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="12dp"
+            android:hint="Série/Ano"
+            app:layout_constraintTop_toBottomOf="@id/tilCourse">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Opção Coffee Break (RF08) -->
-    <CheckBox
-        android:id="@+id/cbCoffeeBreak"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Desejo participar do Coffee Break"
-        app:layout_constraintTop_toBottomOf="@id/tilGrade" />
+        <!-- RF08: Coffee Break -->
+        <CheckBox
+            android:id="@+id/cbCoffeeBreak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Desejo participar do Coffee Break"
+            app:layout_constraintTop_toBottomOf="@id/tilGrade" />
 
-    <!-- Botão Confirmar Inscrição (RF02) -->
-    <Button
-        android:id="@+id/btnConfirmRegistration"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        android:text="Confirmar Inscrição"
-        app:layout_constraintTop_toBottomOf="@id/cbCoffeeBreak" />
+        <!-- RF09: Cadastro de Projetos (Alternar visibilidade via código) -->
+        <CheckBox
+            android:id="@+id/cbPresentProject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Desejo apresentar um projeto"
+            app:layout_constraintTop_toBottomOf="@id/cbCoffeeBreak" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/layoutProjectFields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/cbPresentProject">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Nome do Projeto">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProjectName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Descrição do Projeto">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProjectDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:gravity="top" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnConfirmRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:text="Confirmar Inscrição"
+            android:backgroundTint="@color/primary"
+            app:cornerRadius="30dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutProjectFields" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

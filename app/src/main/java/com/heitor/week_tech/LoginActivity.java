@@ -1,5 +1,6 @@
 package com.heitor.week_tech;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -40,9 +41,11 @@ public class LoginActivity extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                // TODO: Implementar a lógica de autenticação segura e armazenamento (RNF07)
-                // Exibe uma mensagem de sucesso temporária
-                Toast.makeText(LoginActivity.this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                // Navega para a MainActivity após o login (RF07)
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                // Finaliza a Activity de login para que o usuário não volte para ela ao pressionar "voltar"
+                finish();
             }
         });
     }
