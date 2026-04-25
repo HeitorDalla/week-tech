@@ -1,4 +1,4 @@
-package com.heitor.week_tech;
+package com.heitor.week_tech.ui;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.heitor.week_tech.R;
 
 /**
  * Activity para o cadastro de participantes (RF02).

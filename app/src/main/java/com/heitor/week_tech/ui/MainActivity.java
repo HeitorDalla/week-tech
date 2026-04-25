@@ -1,10 +1,12 @@
-package com.heitor.week_tech;
+package com.heitor.week_tech.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.heitor.week_tech.R;
 
 /**
  * Activity Principal que atende ao requisito RF01 (Informações do Evento).

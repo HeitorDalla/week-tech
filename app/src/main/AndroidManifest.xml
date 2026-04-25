@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Weektech">
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,19 +21,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".ui.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".ContactActivity"
+            android:name=".ui.ContactActivity"
             android:exported="false" />
         <activity
-            android:name=".PresenceActivity"
+            android:name=".ui.PresenceActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminActivity"
+            android:name=".ui.AdminActivity"
             android:exported="false" />
     </application>
 

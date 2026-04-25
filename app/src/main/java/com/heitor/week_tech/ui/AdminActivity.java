@@ -1,9 +1,11 @@
-package com.heitor.week_tech;
+package com.heitor.week_tech.ui;
 
 import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.heitor.week_tech.R;
 
 /**
  * Activity para o Painel Administrativo (RF07).

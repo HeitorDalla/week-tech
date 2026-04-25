@@ -1,4 +1,4 @@
-package com.heitor.week_tech;
+package com.heitor.week_tech.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.heitor.week_tech.R;
 
 /**
  * Activity responsável pela tela de Login Administrativo (RF07).
