@@ -1,24 +1,39 @@
 package com.heitor.week_tech;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Activity Principal que atende ao requisito RF01 (Informações do Evento).
+ * Exibe a programação, palestrantes, projetos e patrocinadores.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        Button btnRegister = findViewById(R.id.btnRegister);
+        Button btnPresence = findViewById(R.id.btnPresence);
+        Button btnContact = findViewById(R.id.btnContact);
+
+        // RF02: Navegação para Inscrição
+        btnRegister.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
+        });
+
+        // RF06: Navegação para Confirmação de Presença
+        btnPresence.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, PresenceActivity.class));
+        });
+
+        // RF04 e RF05: Navegação para Contato e Localização
+        btnContact.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ContactActivity.class));
         });
     }
 }
