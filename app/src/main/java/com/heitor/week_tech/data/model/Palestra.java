@@ -3,9 +3,6 @@ package com.heitor.week_tech.data.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-/**
- * RF01 - Informações do Evento
- */
 @Entity(tableName = "palestras")
 public class Palestra {
     @PrimaryKey(autoGenerate = true)
@@ -18,12 +15,14 @@ public class Palestra {
 
     public Palestra() {}
 
-    public Palestra(Long id,
-                    String titulo,
-                    String descricao,
-                    String horario,
-                    String local,
-                    Long palestranteId) {
+    // Construtor usado pela UI
+    public Palestra(String titulo, String horario, String local) {
+        this.titulo = titulo;
+        this.horario = horario;
+        this.local = local;
+    }
+
+    public Palestra(Long id, String titulo, String descricao, String horario, String local, Long palestranteId) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;

@@ -25,16 +25,20 @@
             android:exported="false" />
         <activity
             android:name=".ui.RegistrationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.ContactActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.PresenceActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.AdminActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.LoginActivity" />
     </application>
 
 </manifest>

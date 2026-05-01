@@ -8,10 +8,17 @@ public class Patrocinador {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String nome;
-    private String logoUrl; // Para exibir a imagem do patrocinador
+    private String logoUrl;
     private String linkSite;
+    private int logoResId; // Adicionado para compatibilidade com a UI atual
 
     public Patrocinador() {}
+
+    // Construtor usado pela UI
+    public Patrocinador(String nome, int logoResId) {
+        this.nome = nome;
+        this.logoResId = logoResId;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -21,4 +28,6 @@ public class Patrocinador {
     public void setLogoUrl(String logoUrl) { this.logoUrl = logoUrl; }
     public String getLinkSite() { return linkSite; }
     public void setLinkSite(String linkSite) { this.linkSite = linkSite; }
+    public int getLogoResId() { return logoResId; }
+    public void setLogoResId(int logoResId) { this.logoResId = logoResId; }
 }

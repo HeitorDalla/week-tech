@@ -21,6 +21,12 @@ public class Palestrante {
 
     public Palestrante() {}
 
+    // Construtor usado pela UI
+    public Palestrante(String nome, String temaPalestra) {
+        this.nome = nome;
+        this.temaPalestra = temaPalestra;
+    }
+
     public Palestrante(Long id,
                        String nome,
                        String telefone,

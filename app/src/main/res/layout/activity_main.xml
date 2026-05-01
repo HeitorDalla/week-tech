@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Tela Principal do Evento (RF01).
-    Estilizada com Azul, Branco e detalhes em Amarelo para UX.
--->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -46,39 +42,13 @@
                 android:textColor="@color/primary"
                 android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProgramacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 android:layout_marginBottom="24dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/surface">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="19:00 - Abertura Oficial"
-                        android:textColor="@color/black"
-                        android:paddingBottom="8dp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="20:00 - Palestra: O Futuro da IA"
-                        android:textColor="@color/black"
-                        android:paddingBottom="8dp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="21:30 - Networking e Coffee Break"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                tools:listitem="@layout/item_palestra" />
 
             <!-- Seção: Palestrantes -->
             <TextView
@@ -90,72 +60,14 @@
                 android:textColor="@color/primary"
                 android:layout_marginBottom="8dp" />
 
-            <HorizontalScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPalestrantes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_marginBottom="24dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="12dp"
-                            android:gravity="center">
-                            <View
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:background="@color/secondary"
-                                android:layout_marginBottom="8dp"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Dr. Silva"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="12dp"
-                            android:gravity="center">
-                            <View
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:background="@color/secondary"
-                                android:layout_marginBottom="8dp"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Eng. Souza"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-            </HorizontalScrollView>
+                tools:listitem="@layout/item_palestrante" />
 
             <!-- Seção: Projetos -->
             <TextView
@@ -167,19 +79,13 @@
                 android:textColor="@color/primary"
                 android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProjetos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 android:layout_marginBottom="24dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:text="• Robô Seguidor de Linha\n• App de Saúde Comunitária\n• Sistema de Irrigação IoT" />
-            </com.google.android.material.card.MaterialCardView>
+                tools:listitem="@layout/item_projeto" />
 
             <!-- Seção: Patrocinadores -->
             <TextView
@@ -191,18 +97,15 @@
                 android:textColor="@color/primary"
                 android:layout_marginBottom="8dp" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPatrocinadores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="32dp">
-                <View android:layout_width="50dp" android:layout_height="30dp" android:background="@color/gray_text" android:alpha="0.3" android:layout_margin="12dp"/>
-                <View android:layout_width="50dp" android:layout_height="30dp" android:background="@color/gray_text" android:alpha="0.3" android:layout_margin="12dp"/>
-                <View android:layout_width="50dp" android:layout_height="30dp" android:background="@color/gray_text" android:alpha="0.3" android:layout_margin="12dp"/>
-            </LinearLayout>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginBottom="32dp"
+                tools:listitem="@layout/item_patrocinador" />
 
-            <!-- Botão para Inscrição -->
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"

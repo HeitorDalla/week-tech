@@ -15,7 +15,17 @@ public class Projeto {
     private String nomeProjeto;
     private String descricaoProjeto;
 
+    // Campos simplificados para a UI/Adapter atual
+    private String nome;
+    private String autor;
+
     public Projeto() {}
+
+    // Construtor usado pela UI
+    public Projeto(String nome, String autor) {
+        this.nome = nome;
+        this.autor = autor;
+    }
 
     public Projeto(Long id, String nomeAutor, String raAutor, String nomeProjeto, String descricaoProjeto) {
         this.id = id;
@@ -35,4 +45,9 @@ public class Projeto {
     public void setNomeProjeto(String nomeProjeto) { this.nomeProjeto = nomeProjeto; }
     public String getDescricaoProjeto() { return descricaoProjeto; }
     public void setDescricaoProjeto(String descricaoProjeto) { this.descricaoProjeto = descricaoProjeto; }
+
+    public String getNome() { return nome != null ? nome : nomeProjeto; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getAutor() { return autor != null ? autor : nomeAutor; }
+    public void setAutor(String autor) { this.autor = autor; }
 }

@@ -21,6 +21,13 @@ public class Participante {
 
     public Participante() {}
 
+    // Construtor usado pela UI
+    public Participante(String nome, String ra, boolean querCoffeeBreak) {
+        this.nome = nome;
+        this.ra = ra;
+        this.querCoffeeBreak = querCoffeeBreak;
+    }
+
     public Participante(Long id, String nome, String ra, String curso, String serie, boolean querCoffeeBreak) {
         this.id = id;
         this.nome = nome;
