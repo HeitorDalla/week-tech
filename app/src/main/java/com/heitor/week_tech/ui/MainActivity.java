@@ -2,16 +2,12 @@ package com.heitor.week_tech.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-
+import android.text.Html;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.heitor.week_tech.R;
 
-/**
- * Activity Principal que atende ao requisito RF01 (Informações do Evento).
- * Exibe a programação, palestrantes, projetos e patrocinadores.
- */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,23 +15,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnRegister = findViewById(R.id.btnRegister);
-        Button btnPresence = findViewById(R.id.btnPresence);
-        Button btnContact = findViewById(R.id.btnContact);
+        TextView tvHashtag = findViewById(R.id.tvHashtag);
+        tvHashtag.setText(Html.fromHtml("#WEEK <font color='#00B4D8'>TECH</font>", Html.FROM_HTML_MODE_LEGACY));
 
-        // RF02: Navegação para Inscrição
-        btnRegister.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
-        });
+        TextView tvMainTitle = findViewById(R.id.tvMainTitle);
+        tvMainTitle.setText(Html.fromHtml("WEEK<br/>TECH<font color='#00B4D8'>.</font>", Html.FROM_HTML_MODE_LEGACY));
 
-        // RF06: Navegação para Confirmação de Presença
-        btnPresence.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, PresenceActivity.class));
-        });
+        setupBottomNavigation();
+    }
 
-        // RF04 e RF05: Navegação para Contato e Localização
-        btnContact.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, ContactActivity.class));
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Garante que o item "Início" esteja selecionado ao voltar para esta tela
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
+        bottomNav.setSelectedItemId(R.id.nav_home);
+    }
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
+        bottomNav.setSelectedItemId(R.id.nav_home);
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_presence) {
+                startActivity(new Intent(this, PresenceActivity.class));
+                return true;
+            } else if (id == R.id.nav_registration) {
+                startActivity(new Intent(this, RegistrationActivity.class));
+                return true;
+            } else if (id == R.id.nav_contact) {
+                startActivity(new Intent(this, ContactActivity.class));
+                return true;
+            }
+            return id == R.id.nav_home;
         });
     }
 }

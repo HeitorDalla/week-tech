@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">week-tech</string>
+    <string name="app_name">Week Tech</string>
+    <string name="hashtag_week_tech">#WEEK TECH</string>
+    <string name="location_maringa">MARINGÁ</string>
+    <string name="main_title">WEEK\nTECH.</string>
+    <string name="event_date">24 A 27\nDE JUN</string>
+    <string name="event_divider">//</string>
+    <string name="event_description">Uma semana dedicada à inovação e ao empreendedorismo digital, com eventos abertos ao público promovidos pelas principais iniciativas da capital mineira.</string>
+    <string name="check_schedule">Confira a programação completa</string>
+
+    <string name="registration_title">Inscrição</string>
+    <string name="registration_header">CADASTRO DE PARTICIPANTE</string>
+    <string name="hint_name">Nome Completo</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_phone">Telefone</string>
+    <string name="btn_confirm_registration">Confirmar Inscrição</string>
+
+    <string name="presence_title">Presença</string>
+    <string name="presence_header">REGISTRO DE PRESENÇA</string>
+    <string name="presence_instruction">Escaneie o QR Code no auditório</string>
+    <string name="hint_manual_code">Código Manual</string>
+    <string name="btn_confirm_presence">Confirmar Presença</string>
+
+    <string name="contact_title">Contato</string>
+    <string name="contact_header">SUPORTE E CONTATO</string>
+    <string name="contact_description">Dúvidas sobre o evento ou problemas com o aplicativo? Entre em contato conosco.</string>
+    <string name="support_email_label">Email para Suporte</string>
+    <string name="support_email">suporte@weektech.com.br</string>
+    <string name="location_label">Localização</string>
+    <string name="location_address">Maringá, PR - Brasil</string>
+    <string name="btn_faq">Ver FAQ e Regulamento</string>
+
+    <string name="nav_home">Início</string>
+    <string name="nav_registration">Inscrição</string>
+    <string name="nav_presence">Presença</string>
+    <string name="nav_contact">Contato</string>
+    <string name="total_participants">Total de Alunos: %1$d</string>
+    <string name="label_cpf">CPF: %1$s</string>
 </resources>

@@ -1,17 +1,11 @@
 package com.heitor.week_tech.ui;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.appbar.MaterialToolbar;
 import com.heitor.week_tech.R;
 
-/**
- * Activity para Localização (RF04) e Contato/FAQ (RF05).
- */
 public class ContactActivity extends AppCompatActivity {
 
     @Override
@@ -19,15 +13,13 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        Button btnOpenMaps = findViewById(R.id.btnOpenMaps);
+        MaterialToolbar toolbar = findViewById(R.id.toolbarContact);
+        // Fix para a seta de voltar: encerra a activity atual e volta para a anterior
+        toolbar.setNavigationOnClickListener(v -> finish());
 
-        // RF04: Redireciona para o Google Maps com o endereço da universidade
-        btnOpenMaps.setOnClickListener(v -> {
-            String address = "Av. Guedner, 1610 - Maringá, PR";
-            Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            startActivity(mapIntent);
+        // Botão para FAQ (estilizado conforme novo layout)
+        findViewById(R.id.btnFaq).setOnClickListener(v -> {
+            Toast.makeText(this, "Em breve: Perguntas Frequentes", Toast.LENGTH_SHORT).show();
         });
     }
 }
