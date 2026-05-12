@@ -8,19 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.heitor.week_tech.data.model.FAQ;
+import com.heitor.week_tech.data.model.Palestra;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapter para FAQ (pergunta e resposta).
+ * Adapter para listar a programacao de palestras (RF01).
  */
-public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
+public class EventScheduleAdapter extends RecyclerView.Adapter<EventScheduleAdapter.ViewHolder> {
 
-    private final List<FAQ> items = new ArrayList<>();
+    private final List<Palestra> items = new ArrayList<>();
 
-    public void setItems(List<FAQ> newItems) {
+    public void setItems(List<Palestra> newItems) {
         items.clear();
         if (newItems != null) {
             items.addAll(newItems);
@@ -38,9 +38,12 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        FAQ faq = items.get(position);
-        holder.title.setText(valueOrDash(faq.getPergunta()));
-        holder.subtitle.setText(valueOrDash(faq.getResposta()));
+        Palestra palestra = items.get(position);
+        String tituloLinha = String.format("%s - %s", valueOrDash(palestra.getHorario()), valueOrDash(palestra.getTitulo()));
+        String subtituloLinha = String.format("Local: %s", valueOrDash(palestra.getLocal()));
+
+        holder.title.setText(tituloLinha);
+        holder.subtitle.setText(subtituloLinha);
     }
 
     @Override

@@ -1,19 +1,22 @@
 package com.heitor.week_tech.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.heitor.week_tech.R;
+import com.heitor.week_tech.data.database.AppDatabase;
 import com.heitor.week_tech.adapter.ParticipanteAdapter;
+import com.heitor.week_tech.data.model.Participante;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Activity para o Painel Administrativo (RF07).
@@ -21,40 +24,64 @@ import java.util.List;
  */
 public class AdminActivity extends AppCompatActivity {
 
+    private static final String TAG = "AdminActivity";
+    private RecyclerView rvParticipants;
+    private ParticipanteAdapter adapter;
+    private TextView tvTotalInscriptions;
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> finish());
-
-        setupStats();
-        setupListaParticipantes();
+        tvTotalInscriptions = findViewById(R.id.tvTotalInscriptions);
+        rvParticipants = findViewById(R.id.rvParticipants);
+        if (rvParticipants != null) {
+            rvParticipants.setLayoutManager(new LinearLayoutManager(this));
+            adapter = new ParticipanteAdapter();
+            rvParticipants.setAdapter(adapter);
+        }
 
         Button btnExitAdmin = findViewById(R.id.btnExitAdmin);
-        btnExitAdmin.setOnClickListener(v -> finish());
+
+        // Retorna para a tela de Login
+        if (btnExitAdmin != null) {
+            btnExitAdmin.setOnClickListener(v -> finish());
+        }
+
+        loadParticipants();
     }
 
-    private void setupStats() {
-        TextView tvTotal = findViewById(R.id.tvTotalInscriptions);
-        TextView tvCoffee = findViewById(R.id.tvTotalCoffee);
-
-        // Dados estáticos para demonstração (RF08)
-        tvTotal.setText("Total de Alunos: 3");
-        tvCoffee.setText("Confirmados no Coffee Break: 2");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadParticipants();
     }
 
-    private void setupListaParticipantes() {
-        RecyclerView rv = findViewById(R.id.rvParticipantes);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+    private void loadParticipants() {
+        Log.d(TAG, "Carregando participantes do banco de dados...");
+        executorService.execute(() -> {
+            try {
+                List<Participante> participants = AppDatabase.getInstance(this).participanteDao().getAll();
+                Log.d(TAG, "Participantes carregados: " + participants.size());
+                runOnUiThread(() -> {
+                    if (adapter != null) {
+                        adapter.setParticipants(participants);
+                    }
+                    if (tvTotalInscriptions != null) {
+                        tvTotalInscriptions.setText("Total de Alunos: " + participants.size());
+                    }
+                });
+            } catch (Exception e) {
+                Log.e(TAG, "Erro ao carregar participantes", e);
+            }
+        });
+    }
 
-        List<Participante> list = new ArrayList<>();
-        list.add(new Participante("Heitor Souza", "123456", true));
-        list.add(new Participante("Maria Silva", "654321", true));
-        list.add(new Participante("João Pereira", "112233", false));
-
-        rv.setAdapter(new ParticipanteAdapter(list));
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        executorService.shutdown();
     }
 }

@@ -8,19 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.heitor.week_tech.data.model.FAQ;
+import com.heitor.week_tech.data.model.Palestrante;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapter para FAQ (pergunta e resposta).
+ * Adapter para listar palestrantes e status de aprovação.
  */
-public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
+public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.ViewHolder> {
 
-    private final List<FAQ> items = new ArrayList<>();
+    private final List<Palestrante> items = new ArrayList<>();
 
-    public void setItems(List<FAQ> newItems) {
+    public void setItems(List<Palestrante> newItems) {
         items.clear();
         if (newItems != null) {
             items.addAll(newItems);
@@ -38,9 +38,14 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        FAQ faq = items.get(position);
-        holder.title.setText(valueOrDash(faq.getPergunta()));
-        holder.subtitle.setText(valueOrDash(faq.getResposta()));
+        Palestrante palestrante = items.get(position);
+        String nomeLinha = valueOrDash(palestrante.getNome());
+        String temaLinha = String.format("Tema: %s | %s",
+                valueOrDash(palestrante.getTemaPalestra()),
+                palestrante.isAprovado() ? "Aprovado" : "Pendente");
+
+        holder.title.setText(nomeLinha);
+        holder.subtitle.setText(temaLinha);
     }
 
     @Override

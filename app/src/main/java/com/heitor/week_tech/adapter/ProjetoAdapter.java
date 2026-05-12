@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.heitor.week_tech.R;
+import com.heitor.week_tech.data.model.Projeto;
 
 import java.util.List;
 
@@ -28,8 +29,8 @@ public class ProjetoAdapter extends RecyclerView.Adapter<ProjetoAdapter.ProjetoV
     @Override
     public void onBindViewHolder(@NonNull ProjetoViewHolder holder, int position) {
         Projeto projeto = projetos.get(position);
-        holder.tvNome.setText(projeto.getNome());
-        holder.tvAutor.setText(projeto.getAutor());
+        holder.tvNome.setText(projeto.getNomeProjeto());
+        holder.tvAutor.setText(projeto.getNomeAutor());
     }
 
     @Override

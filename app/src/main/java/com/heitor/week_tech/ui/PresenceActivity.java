@@ -5,8 +5,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.heitor.week_tech.R;
 
@@ -23,8 +23,7 @@ public class PresenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presence);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        MaterialToolbar toolbar = findViewById(R.id.toolbarPresence);
         toolbar.setNavigationOnClickListener(v -> finish());
 
         etPresenceCode = findViewById(R.id.etPresenceCode);

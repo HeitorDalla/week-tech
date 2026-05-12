@@ -9,14 +9,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.heitor.week_tech.R;
 import com.google.android.material.chip.Chip;
 
+import com.heitor.week_tech.data.model.Participante;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapter.ParticipanteViewHolder> {
 
-    private final List<Participante> participantes;
+    private List<Participante> participantes = new ArrayList<>();
 
-    public ParticipanteAdapter(List<Participante> participantes) {
+    public ParticipanteAdapter() {
+    }
+
+    public void setParticipants(List<Participante> participantes) {
         this.participantes = participantes;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,7 +38,7 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
         Participante participante = participantes.get(position);
         holder.tvNome.setText(participante.getNome());
         holder.tvRA.setText("RA: " + participante.getRa());
-        holder.chipCoffee.setVisibility(participante.isCoffeeBreak() ? View.VISIBLE : View.GONE);
+        holder.chipCoffee.setVisibility(participante.isQuerCoffeeBreak() ? View.VISIBLE : View.GONE);
     }
 
     @Override

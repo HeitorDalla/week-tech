@@ -1,93 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    Área Administrativa (RF07).
+    Relatório de inscrições e Coffee Break (RF08)..
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background">
+    android:padding="24dp"
+    android:background="@drawable/bg_cityscape">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <TextView
+        android:id="@+id/tvAdminTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Painel Administrativo"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardStats"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/primary"
-            app:title="Painel Administrativo"
-            app:titleTextColor="@color/white"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:navigationIconTint="@color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAdminTitle">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="24dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardStats"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resumo de Inscrições"
+                android:textStyle="bold"
+                android:textColor="@color/cyan"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvTotalInscriptions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:text="Total de Alunos: 0"
+                android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Resumo de Inscrições"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tvTotalCoffee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmados no Coffee Break: 0"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tvTotalInscriptions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Total de Alunos: 0" />
+    <TextView
+        android:id="@+id/tvListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Lista de Alunos"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/cardStats"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvTotalCoffee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Confirmados no Coffee Break: 0" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/tvListTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Lista de Alunos"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/cardStats"
-            app:layout_constraintStart_toStartOf="parent" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvListTitle"
+        app:layout_constraintBottom_toTopOf="@id/btnExitAdmin">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvParticipantes"
+            android:id="@+id/rvParticipants"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvListTitle"
-            app:layout_constraintBottom_toTopOf="@id/btnExitAdmin"
-            tools:listitem="@layout/item_participante" />
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            tools:listitem="@layout/item_participant" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnExitAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Sair do Painel"
-            android:backgroundTint="@color/primary"
-            app:cornerRadius="30dp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+    <Button
+        android:id="@+id/btnExitAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Sair do Painel"
+        android:backgroundTint="@color/cyan"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.heitor.week_tech.R;
+import com.heitor.week_tech.data.model.Patrocinador;
 
 import java.util.List;
 

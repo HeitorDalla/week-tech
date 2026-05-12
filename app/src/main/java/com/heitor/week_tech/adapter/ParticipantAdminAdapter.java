@@ -8,19 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.heitor.week_tech.data.model.FAQ;
+import com.heitor.week_tech.data.model.Participante;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapter para FAQ (pergunta e resposta).
+ * Adapter para listagem administrativa de participantes.
  */
-public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
+public class ParticipantAdminAdapter extends RecyclerView.Adapter<ParticipantAdminAdapter.ViewHolder> {
 
-    private final List<FAQ> items = new ArrayList<>();
+    private final List<Participante> items = new ArrayList<>();
 
-    public void setItems(List<FAQ> newItems) {
+    public void setItems(List<Participante> newItems) {
         items.clear();
         if (newItems != null) {
             items.addAll(newItems);
@@ -38,9 +38,17 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        FAQ faq = items.get(position);
-        holder.title.setText(valueOrDash(faq.getPergunta()));
-        holder.subtitle.setText(valueOrDash(faq.getResposta()));
+        Participante participante = items.get(position);
+        String nomeLinha = String.format("%s (RA: %s)",
+                valueOrDash(participante.getNome()),
+                valueOrDash(participante.getRa()));
+        String detalheLinha = String.format("Curso: %s | Serie: %s | Coffee: %s",
+                valueOrDash(participante.getCurso()),
+                valueOrDash(participante.getSerie()),
+                participante.isQuerCoffeeBreak() ? "Sim" : "Nao");
+
+        holder.title.setText(nomeLinha);
+        holder.subtitle.setText(detalheLinha);
     }
 
     @Override
