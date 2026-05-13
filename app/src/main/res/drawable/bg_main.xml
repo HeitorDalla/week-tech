@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base Gradient for Depth -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#051937"
+                android:startColor="#1a3a5f"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Simulating City Lights/Glow at the bottom -->
+    <item android:top="400dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:endColor="#00000000"
+                android:startColor="#2000B4D8"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 1. Deep Night Sky Gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#051937"
+                android:startColor="#1a3a5f"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 2. City Horizon Glow (Cyan/Blue) -->
+    <item android:top="250dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:endColor="#00000000"
+                android:startColor="#2500B4D8"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 3. Abstract Building Outlines (The "Cityscape" Silhouette) -->
+    <item android:top="400dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:startColor="#15FFFFFF"
+                android:endColor="#00000000"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 4. Subtle Dots/Grid Pattern for Modern Look -->
+    <item>
+        <selector>
+            <item>
+                <shape android:shape="rectangle">
+                    <stroke android:width="0.5dp" android:color="#0AFFFFFF" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</layer-list>
