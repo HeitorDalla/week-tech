@@ -39,11 +39,12 @@
                 android:textStyle="bold"
                 android:letterSpacing="0.1" />
 
+            <!-- Nome -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:hint="Nome Completo"
                 app:boxBackgroundColor="#F2FFFFFF"
                 app:boxCornerRadiusTopStart="8dp"
@@ -52,8 +53,7 @@
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/cyan"
-                android:textColorHint="@color/primary">
+                app:boxStrokeColor="@color/cyan">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
@@ -61,11 +61,12 @@
                     android:textColor="@color/primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Email -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:hint="Email"
                 app:boxBackgroundColor="#F2FFFFFF"
                 app:boxCornerRadiusTopStart="8dp"
@@ -74,8 +75,7 @@
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/cyan"
-                android:textColorHint="@color/primary">
+                app:boxStrokeColor="@color/cyan">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
@@ -84,51 +84,130 @@
                     android:textColor="@color/primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- CPF e Telefone em linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:hint="CPF"
+                    app:boxBackgroundColor="#F2FFFFFF"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeWidth="0dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCpf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Telefone"
+                    app:boxBackgroundColor="#F2FFFFFF"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeWidth="0dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:textColor="@color/primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- RA -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="CPF"
+                android:layout_marginBottom="12dp"
+                android:hint="RA (Registro Acadêmico)"
                 app:boxBackgroundColor="#F2FFFFFF"
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusBottomEnd="8dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/cyan"
-                android:textColorHint="@color/primary">
+                app:boxStrokeWidth="0dp">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCpf"
+                    android:id="@+id/etRa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:textColor="@color/primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            <!-- Curso e Série -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:hint="Telefone"
-                app:boxBackgroundColor="#F2FFFFFF"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:boxStrokeColor="@color/cyan"
-                android:textColorHint="@color/primary">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPhone"
-                    android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:textColor="@color/primary" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginEnd="8dp"
+                    android:hint="Curso"
+                    app:boxBackgroundColor="#F2FFFFFF"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeWidth="0dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCourse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Série"
+                    app:boxBackgroundColor="#F2FFFFFF"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeWidth="0dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Coffee Break -->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swCoffeeBreak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Deseja participar do Coffee Break?"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:thumbTint="@color/cyan"
+                app:trackTint="@color/cyan" />
 
             <Button
                 android:id="@+id/btnSubmitRegistration"

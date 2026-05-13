@@ -20,7 +20,6 @@ public class Palestrante {
     private boolean aprovado;
 
     public Palestrante() {}
-
     public Palestrante(Long id,
                        String nome,
                        String telefone,

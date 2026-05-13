@@ -14,6 +14,9 @@ public class Participante {
     private Long id;
 
     private String nome;
+    private String email;
+    private String cpf;
+    private String telefone;
     private String ra;
     private String curso;
     private String serie;
@@ -21,60 +24,30 @@ public class Participante {
 
     public Participante() {}
 
-    public Participante(Long id, String nome, String ra, String curso, String serie, boolean querCoffeeBreak) {
-        this.id = id;
+    public Participante(String nome, String email, String cpf, String telefone) {
         this.nome = nome;
-        this.ra = ra;
-        this.curso = curso;
-        this.serie = serie;
-        this.querCoffeeBreak = querCoffeeBreak;
+        this.email = email;
+        this.cpf = cpf;
+        this.telefone = telefone;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getRa() {
-        return ra;
-    }
-
-    public void setRa(String ra) {
-        this.ra = ra;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public String getSerie() {
-        return serie;
-    }
-
-    public void setSerie(String serie) {
-        this.serie = serie;
-    }
-
-    public boolean isQuerCoffeeBreak() {
-        return querCoffeeBreak;
-    }
-
-    public void setQuerCoffeeBreak(boolean querCoffeeBreak) {
-        this.querCoffeeBreak = querCoffeeBreak;
-    }
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
+    public String getRa() { return ra; }
+    public void setRa(String ra) { this.ra = ra; }
+    public String getCurso() { return curso; }
+    public void setCurso(String curso) { this.curso = curso; }
+    public String getSerie() { return serie; }
+    public void setSerie(String serie) { this.serie = serie; }
+    public boolean isQuerCoffeeBreak() { return querCoffeeBreak; }
+    public void setQuerCoffeeBreak(boolean querCoffeeBreak) { this.querCoffeeBreak = querCoffeeBreak; }
 }

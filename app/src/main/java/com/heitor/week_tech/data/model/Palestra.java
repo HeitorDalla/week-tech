@@ -17,7 +17,6 @@ public class Palestra {
     private Long palestranteId;
 
     public Palestra() {}
-
     public Palestra(Long id,
                     String titulo,
                     String descricao,

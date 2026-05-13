@@ -68,6 +68,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvSupportEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/support_email"
@@ -89,6 +90,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvLocationAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/location_address"

@@ -8,19 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.heitor.week_tech.data.model.Projeto;
+import com.heitor.week_tech.data.model.FAQ;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Adapter para listar projetos cadastrados.
+ * Adapter para FAQ (pergunta e resposta).
  */
-public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
+public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.ViewHolder> {
 
-    private final List<Projeto> items = new ArrayList<>();
+    private final List<FAQ> items = new ArrayList<>();
 
-    public void setItems(List<Projeto> newItems) {
+    public void setItems(List<FAQ> newItems) {
         items.clear();
         if (newItems != null) {
             items.addAll(newItems);
@@ -38,14 +38,9 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Projeto projeto = items.get(position);
-        String tituloLinha = valueOrDash(projeto.getNomeProjeto());
-        String subtituloLinha = String.format("Autor: %s (RA: %s)",
-                valueOrDash(projeto.getNomeAutor()),
-                valueOrDash(projeto.getRaAutor()));
-
-        holder.title.setText(tituloLinha);
-        holder.subtitle.setText(subtituloLinha);
+        FAQ faq = items.get(position);
+        holder.title.setText(valueOrDash(faq.getPergunta()));
+        holder.subtitle.setText(valueOrDash(faq.getResposta()));
     }
 
     @Override

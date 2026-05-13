@@ -3,29 +3,30 @@ package com.heitor.week_tech.ui;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
 import com.heitor.week_tech.R;
-import com.heitor.week_tech.data.local.database.AppDatabase;
-import com.heitor.week_tech.data.local.entity.Participant;
+import com.heitor.week_tech.data.database.AppDatabase;
+import com.heitor.week_tech.data.model.Participante;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  * Activity para o cadastro de participantes (RF02).
- * Atende aos requisitos RF08 (Coffee Break) e RF09 (Cadastro de Projetos).
+ * Atende aos requisitos RF08 (Coffee Break).
  */
 public class RegistrationActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistrationActivity";
-    private TextInputEditText etName, etEmail, etCpf, etPhone;
+    private TextInputEditText etName, etEmail, etCpf, etPhone, etRa, etCourse, etYear;
+    private SwitchMaterial swCoffeeBreak;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Override
@@ -40,13 +41,13 @@ public class RegistrationActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etCpf = findViewById(R.id.etCpf);
         etPhone = findViewById(R.id.etPhone);
+        etRa = findViewById(R.id.etRa);
+        etCourse = findViewById(R.id.etCourse);
+        etYear = findViewById(R.id.etYear);
+        swCoffeeBreak = findViewById(R.id.swCoffeeBreak);
 
         Button btnConfirm = findViewById(R.id.btnSubmitRegistration);
-
-        // Lógica de confirmação de inscrição
-        btnConfirm.setOnClickListener(v -> {
-            saveParticipant();
-        });
+        btnConfirm.setOnClickListener(v -> saveParticipant());
     }
 
     private void saveParticipant() {
@@ -54,20 +55,26 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String cpf = etCpf.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
+        String ra = etRa.getText().toString().trim();
+        String course = etCourse.getText().toString().trim();
+        String year = etYear.getText().toString().trim();
+        boolean coffeeBreak = swCoffeeBreak.isChecked();
 
-        Log.d(TAG, "Tentativa de salvar participante: " + name);
-
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(cpf) || TextUtils.isEmpty(phone)) {
-            Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(cpf) || 
+            TextUtils.isEmpty(phone) || TextUtils.isEmpty(ra)) {
+            Toast.makeText(this, "Por favor, preencha os campos obrigatórios (Nome, Email, CPF, Telefone e RA)", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Participant participant = new Participant(name, email, cpf, phone);
+        Participante participant = new Participante(name, email, cpf, phone);
+        participant.setRa(ra);
+        participant.setCurso(course);
+        participant.setSerie(year);
+        participant.setQuerCoffeeBreak(coffeeBreak);
 
         executorService.execute(() -> {
             try {
-                AppDatabase.getInstance(this).participantDao().insert(participant);
-                Log.d(TAG, "Participante salvo com sucesso no Room");
+                AppDatabase.getInstance(this).participanteDao().insert(participant);
                 runOnUiThread(() -> {
                     Toast.makeText(this, "Inscrição confirmada com sucesso!", Toast.LENGTH_LONG).show();
                     finish();

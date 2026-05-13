@@ -14,6 +14,10 @@ public class FAQ {
     private String resposta;
 
     public FAQ() {}
+    public FAQ(String pergunta, String resposta) {
+        this.pergunta = pergunta;
+        this.resposta = resposta;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

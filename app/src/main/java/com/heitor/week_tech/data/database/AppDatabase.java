@@ -57,7 +57,6 @@ public abstract class AppDatabase extends RoomDatabase {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "week_tech_database")
                             .fallbackToDestructiveMigration()
-                            .allowMainThreadQueries()
                             .build();
                 }
             }

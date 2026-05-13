@@ -21,13 +21,17 @@ public class MainActivity extends AppCompatActivity {
         TextView tvMainTitle = findViewById(R.id.tvMainTitle);
         tvMainTitle.setText(Html.fromHtml("WEEK<br/>TECH<font color='#00B4D8'>.</font>", Html.FROM_HTML_MODE_LEGACY));
 
+        // Link para a tela de Programação (ScheduleActivity)
+        findViewById(R.id.btnProgramacao).setOnClickListener(v -> {
+            startActivity(new Intent(this, ScheduleActivity.class));
+        });
+
         setupBottomNavigation();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Garante que o item "Início" esteja selecionado ao voltar para esta tela
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
         bottomNav.setSelectedItemId(R.id.nav_home);
     }

@@ -14,7 +14,6 @@ public class Projeto {
     private String raAutor;
     private String nomeProjeto;
     private String descricaoProjeto;
-
     public Projeto() {}
 
     public Projeto(Long id, String nomeAutor, String raAutor, String nomeProjeto, String descricaoProjeto) {

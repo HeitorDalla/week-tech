@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.heitor.week_tech.R;
-import com.heitor.week_tech.data.local.database.AppDatabase;
-import com.heitor.week_tech.ui.adapter.ParticipantAdapter;
+import com.heitor.week_tech.adapter.ParticipanteAdapter;
+import com.heitor.week_tech.data.database.AppDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,7 +24,7 @@ public class AdminActivity extends AppCompatActivity {
 
     private static final String TAG = "AdminActivity";
     private RecyclerView rvParticipants;
-    private ParticipantAdapter adapter;
+    private ParticipanteAdapter adapter;
     private TextView tvTotalInscriptions;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -36,7 +36,7 @@ public class AdminActivity extends AppCompatActivity {
         tvTotalInscriptions = findViewById(R.id.tvTotalInscriptions);
         rvParticipants = findViewById(R.id.rvParticipants);
         rvParticipants.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ParticipantAdapter();
+        adapter = new ParticipanteAdapter();
         rvParticipants.setAdapter(adapter);
 
         Button btnExitAdmin = findViewById(R.id.btnExitAdmin);
@@ -59,10 +59,10 @@ public class AdminActivity extends AppCompatActivity {
         Log.d(TAG, "Carregando participantes do banco de dados...");
         executorService.execute(() -> {
             try {
-                var participants = AppDatabase.getInstance(this).participantDao().getAllParticipants();
+                var participants = AppDatabase.getInstance(this).participanteDao().getAll();
                 Log.d(TAG, "Participantes carregados: " + participants.size());
                 runOnUiThread(() -> {
-                    adapter.setParticipants(participants);
+                    adapter.setItems(participants);
                     tvTotalInscriptions.setText(getString(R.string.total_participants, participants.size()));
                 });
             } catch (Exception e) {
