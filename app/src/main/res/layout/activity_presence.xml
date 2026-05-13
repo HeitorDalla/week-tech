@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary">
+    android:background="@drawable/bg_main">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarPresence"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:navigationIconTint="@color/white"
-        app:title="Presença"
+        app:title="@string/presence_title_short"
+        app:titleCentered="true"
         app:titleTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -22,7 +25,6 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="24dp"
-        android:background="@drawable/bg_cityscape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarPresence">
 
@@ -30,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="REGISTRO DE PRESENÇA"
+            android:text="@string/presence_header"
             android:textColor="@color/cyan"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -40,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Escaneie o QR Code no auditório"
+            android:text="@string/presence_instruction"
             android:textColor="@color/white"
             android:alpha="0.8" />
 
@@ -53,38 +55,41 @@
             app:cardElevation="0dp"
             app:strokeColor="@color/cyan"
             app:strokeWidth="2dp"
-            app:cardBackgroundColor="@color/surface">
+            app:cardBackgroundColor="@color/input_background">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="40dp"
+                android:contentDescription="@string/qr_code_placeholder"
                 android:src="@android:drawable/ic_menu_camera"
                 app:tint="@color/cyan" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:hint="Código Manual"
-            app:boxBackgroundColor="#F2FFFFFF"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="2dp"
-            app:boxStrokeColor="@color/cyan"
-            android:textColorHint="@color/primary">
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/input_background"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_calendar_24"
+            app:startIconTint="@color/gray_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPresenceCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/presence_manual"
                 android:inputType="textCapCharacters"
-                android:textColor="@color/primary" />
+                android:minHeight="52dp"
+                android:paddingVertical="14dp"
+                android:textColor="@color/white"
+                android:textColorHint="#B0B0B0" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -92,12 +97,13 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:backgroundTint="@color/cyan"
-            android:text="Confirmar Presença"
+            android:text="@string/btn_confirm_presence"
             android:textAllCaps="false"
             android:textColor="@color/primary"
             android:textStyle="bold"
             app:cornerRadius="4dp" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

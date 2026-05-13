@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_cityscape"
+    android:background="@drawable/bg_main"
     tools:context=".ui.MainActivity">
 
     <!-- Top Branding -->
@@ -102,12 +102,13 @@
 
     </LinearLayout>
 
+    <!-- Bottom Navigation integrated into the dark theme -->
     <Button
         android:id="@+id/btnProgramacao"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="4dp"
         android:backgroundTint="@color/cyan"
         android:text="@string/check_schedule"
         android:textAllCaps="false"
@@ -119,14 +120,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Bottom Navigation integrated into the dark theme -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCheckPresence"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/check_presence"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        app:backgroundTint="@color/cyan"
+        app:cornerRadius="4dp"
+        app:icon="@android:drawable/ic_menu_camera"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:iconTint="@color/primary"
+        app:layout_constraintBottom_toTopOf="@id/btnProgramacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="58dp"
         android:background="@color/primary"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/nav_item_background"
+        app:itemIconSize="18dp"
+        app:itemIconTint="@color/nav_item_tint"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@color/nav_item_tint"
+        app:itemTextAppearanceActive="@style/TextAppearance.Weektech.BottomNav.Active"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Weektech.BottomNav.Inactive"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 

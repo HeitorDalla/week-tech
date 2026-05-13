@@ -16,6 +16,8 @@ import com.heitor.week_tech.R;
  */
 public class LoginActivity extends AppCompatActivity {
 
+    public static final String EXTRA_REDIRECT_TO_ADMIN = "extra_redirect_to_admin";
+
     // Declaração dos componentes da interface
     private TextInputEditText etEmail;
     private TextInputEditText etPassword;
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Define o layout XML que será exibido (activity_login.xml)
         setContentView(R.layout.activity_login);
+        boolean redirectToAdmin = getIntent().getBooleanExtra(EXTRA_REDIRECT_TO_ADMIN, false);
 
         // Inicialização dos componentes buscando-os pelo ID definido no XML
         etEmail = findViewById(R.id.etEmail);
@@ -42,8 +45,9 @@ public class LoginActivity extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
             } else {
-                // Navega para a MainActivity após o login (RF07)
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = redirectToAdmin
+                        ? new Intent(LoginActivity.this, AdminActivity.class)
+                        : new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 // Finaliza a Activity de login para que o usuário não volte para ela ao pressionar "voltar"
                 finish();

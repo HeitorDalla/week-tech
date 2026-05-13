@@ -16,7 +16,6 @@ import com.heitor.week_tech.R;
 public class PresenceActivity extends AppCompatActivity {
 
     private TextInputEditText etPresenceCode;
-    private Button btnConfirmPresence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +26,10 @@ public class PresenceActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> finish());
 
         etPresenceCode = findViewById(R.id.etPresenceCode);
-        btnConfirmPresence = findViewById(R.id.btnConfirmPresence);
+        Button btnConfirmPresence = findViewById(R.id.btnConfirmPresence);
 
         btnConfirmPresence.setOnClickListener(v -> {
-            String code = etPresenceCode.getText().toString();
+            String code = etPresenceCode.getText() != null ? etPresenceCode.getText().toString() : "";
             if (code.isEmpty()) {
                 Toast.makeText(this, "Por favor, insira o código da palestra", Toast.LENGTH_SHORT).show();
             } else {

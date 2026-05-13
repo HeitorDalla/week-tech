@@ -11,12 +11,18 @@ public class Participant {
     private String email;
     private String cpf;
     private String phone;
+    private String course;
+    private String period;
+    private boolean coffeeBreak;
 
-    public Participant(String name, String email, String cpf, String phone) {
+    public Participant(String name, String email, String cpf, String phone, String course, String period, boolean coffeeBreak) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.phone = phone;
+        this.course = course;
+        this.period = period;
+        this.coffeeBreak = coffeeBreak;
     }
 
     public int getId() { return id; }
@@ -29,4 +35,10 @@ public class Participant {
     public void setCpf(String cpf) { this.cpf = cpf; }
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
+    public String getCourse() { return course; }
+    public void setCourse(String course) { this.course = course; }
+    public String getPeriod() { return period; }
+    public void setPeriod(String period) { this.period = period; }
+    public boolean isCoffeeBreak() { return coffeeBreak; }
+    public void setCoffeeBreak(boolean coffeeBreak) { this.coffeeBreak = coffeeBreak; }
 }

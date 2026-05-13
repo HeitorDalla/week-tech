@@ -8,27 +8,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="@drawable/bg_cityscape">
+    android:background="@drawable/bg_main">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAdmin"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:navigationIconTint="@color/white"
+        app:title="@string/admin_title"
+        app:titleCentered="true"
+        app:titleTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvAdminTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Painel Administrativo"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/admin_title"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarAdmin"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardStats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="24dp"
-        app:cardBackgroundColor="@color/surface"
+        app:cardBackgroundColor="@color/input_background"
         app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
         app:layout_constraintTop_toBottomOf="@id/tvAdminTitle">
 
         <LinearLayout
@@ -40,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Resumo de Inscrições"
+                android:text="@string/admin_summary"
                 android:textStyle="bold"
                 android:textColor="@color/cyan"
                 android:layout_marginBottom="8dp"/>
@@ -49,14 +66,14 @@
                 android:id="@+id/tvTotalInscriptions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Total de Alunos: 0"
+                android:text="@string/total_participants_zero"
                 android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/tvTotalCoffee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Confirmados no Coffee Break: 0"
+                android:text="@string/admin_coffee_confirmed_zero"
                 android:textColor="@color/white" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -65,8 +82,9 @@
         android:id="@+id/tvListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Lista de Alunos"
+        android:text="@string/admin_list"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/cardStats"
@@ -76,10 +94,12 @@
         android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="@color/surface"
+        app:cardBackgroundColor="@color/input_background"
         app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
         app:layout_constraintTop_toBottomOf="@id/tvListTitle"
         app:layout_constraintBottom_toTopOf="@id/btnExitAdmin">
 
@@ -95,11 +115,46 @@
         android:id="@+id/btnExitAdmin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Sair do Painel"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/admin_exit"
         android:backgroundTint="@color/cyan"
         android:textColor="@color/primary"
         android:textStyle="bold"
         app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/adminBottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/adminBottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="58dp"
+        android:background="@color/primary"
+        app:itemBackground="@drawable/nav_item_background"
+        app:itemIconSize="18dp"
+        app:itemIconTint="@color/nav_item_tint"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@color/nav_item_tint"
+        app:itemTextAppearanceActive="@style/TextAppearance.Weektech.BottomNav.Active"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Weektech.BottomNav.Inactive"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/admin_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add_item"
+        app:backgroundTint="@color/cyan"
+        app:tint="@color/primary"
+        app:srcCompat="@drawable/ic_edit_24"
+        app:layout_constraintBottom_toTopOf="@id/adminBottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

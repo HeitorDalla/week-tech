@@ -2,32 +2,27 @@ package com.heitor.week_tech.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.widget.Button;
-import android.widget.TextView;
-import com.google.android.material.button.MaterialButton;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.heitor.week_tech.R;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Tela de programação de palestras do evento.
+ */
+public class EventScheduleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_eventschedule);
 
-        TextView tvHashtag = findViewById(R.id.tvHashtag);
-        tvHashtag.setText(Html.fromHtml("#WEEK <font color='#00B4D8'>TECH</font>", Html.FROM_HTML_MODE_LEGACY));
+        MaterialToolbar toolbar = findViewById(R.id.toolbarEventSchedule);
+        toolbar.setNavigationOnClickListener(v -> finish());
 
-        TextView tvMainTitle = findViewById(R.id.tvMainTitle);
-        tvMainTitle.setText(Html.fromHtml("WEEK<br/>TECH<font color='#00B4D8'>.</font>", Html.FROM_HTML_MODE_LEGACY));
-
-        Button btnProgramacao = findViewById(R.id.btnProgramacao);
-        btnProgramacao.setOnClickListener(v -> startActivity(new Intent(this, EventScheduleActivity.class)));
-
-        MaterialButton btnCheckPresence = findViewById(R.id.btnCheckPresence);
-        btnCheckPresence.setOnClickListener(v -> startActivity(new Intent(this, PresenceActivity.class)));
+        findViewById(R.id.verPalestrantes).setOnClickListener(v -> startActivity(new Intent(this, SpeakersActivity.class)));
 
         setupBottomNavigation();
     }
@@ -35,33 +30,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Garante que o item "Início" esteja selecionado ao voltar para esta tela
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
-        bottomNav.setSelectedItemId(R.id.nav_home);
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.nav_presence);
+        }
     }
 
     private void setupBottomNavigation() {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
-        bottomNav.setSelectedItemId(R.id.nav_home);
+        bottomNav.setSelectedItemId(R.id.nav_presence);
 
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.nav_presence) {
-                startActivity(new Intent(this, EventScheduleActivity.class));
+            if (id == R.id.nav_home) {
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
                 return true;
             } else if (id == R.id.nav_registration) {
                 startActivity(new Intent(this, RegistrationActivity.class));
+                finish();
                 return true;
             } else if (id == R.id.nav_contact) {
                 startActivity(new Intent(this, ContactActivity.class));
+                finish();
                 return true;
             } else if (id == R.id.nav_admin) {
                 Intent intent = new Intent(this, LoginActivity.class);
                 intent.putExtra(LoginActivity.EXTRA_REDIRECT_TO_ADMIN, true);
                 startActivity(intent);
+                finish();
                 return true;
             }
-            return id == R.id.nav_home;
+            return true;
         });
     }
 }
+

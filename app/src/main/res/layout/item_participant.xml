@@ -4,7 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardElevation="2dp">
+    app:cardBackgroundColor="@color/input_background"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/primary"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +20,7 @@
             android:id="@+id/tvItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/primary"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -24,15 +28,37 @@
             android:id="@+id/tvItemEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#666666"
+            android:textColor="@color/cyan"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvItemCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#999999"
+            android:textColor="@color/gray_text"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvItemCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvItemPeriod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvItemCoffee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cyan"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

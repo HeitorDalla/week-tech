@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary">
+    android:background="@drawable/bg_main">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarContact"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:navigationIconTint="@color/white"
-        app:title="Contato"
+        app:title="@string/contact_title_short"
+        app:titleCentered="true"
         app:titleTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -22,8 +25,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="24dp"
-        android:background="@drawable/bg_cityscape"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintTop_toBottomOf="@id/toolbarContact">
 
         <TextView
@@ -49,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            app:cardBackgroundColor="@color/surface"
+            app:cardBackgroundColor="@color/input_background"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp">
 
@@ -104,11 +106,30 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="32dp"
-            android:text="@string/btn_faq"
+            android:text="@string/btn_faq_see"
             android:textAllCaps="false"
             android:textColor="@color/cyan"
             app:strokeColor="@color/cyan" />
 
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="58dp"
+        android:background="@color/primary"
+        app:itemBackground="@drawable/nav_item_background"
+        app:itemIconSize="18dp"
+        app:itemIconTint="@color/nav_item_tint"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@color/nav_item_tint"
+        app:itemTextAppearanceActive="@style/TextAppearance.Weektech.BottomNav.Active"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Weektech.BottomNav.Inactive"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

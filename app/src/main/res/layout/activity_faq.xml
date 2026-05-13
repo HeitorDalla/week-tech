@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_cityscape">
+    android:background="@drawable/bg_main">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarFaq"
@@ -17,8 +16,10 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/primary"
-            app:navigationIcon="@drawable/abc_ic_ab_back_material"
-            app:title="Dúvidas Frequentes (FAQ)"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:navigationIconTint="@color/white"
+            app:title="@string/faq_title"
+            app:titleCentered="true"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -34,14 +35,24 @@
             android:orientation="vertical"
             android:padding="24dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:text="@string/faq_title"
+                android:textColor="@color/cyan"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
             <!-- FAQ Item 1 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/surface"
+                app:cardBackgroundColor="@color/input_background"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardElevation="0dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,14 +61,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Como obtenho meu certificado?"
+                        android:text="@string/faq_q1"
                         android:textStyle="bold"
                         android:textColor="@color/cyan"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Os certificados serão enviados automaticamente para o e-mail cadastrado em até 7 dias úteis após o encerramento do evento."
+                        android:text="@string/faq_a1"
                         android:textColor="#DDFFFFFF" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -67,9 +78,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/surface"
+                app:cardBackgroundColor="@color/input_background"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardElevation="0dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,14 +89,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Esqueci de registrar presença em uma palestra, o que fazer?"
+                        android:text="@string/faq_q2"
                         android:textStyle="bold"
                         android:textColor="@color/cyan"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Procure a mesa de apoio administrativo no hall de entrada para validar sua participação manualmente."
+                        android:text="@string/faq_a2"
                         android:textColor="#DDFFFFFF" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -95,9 +106,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/surface"
+                app:cardBackgroundColor="@color/input_background"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardElevation="0dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,14 +117,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="O Coffee Break é gratuito?"
+                        android:text="@string/faq_q3"
                         android:textStyle="bold"
                         android:textColor="@color/cyan"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Sim, o Coffee Break está incluso para todos os alunos devidamente inscritos no evento."
+                        android:text="@string/faq_a3"
                         android:textColor="#DDFFFFFF" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -123,9 +134,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/surface"
+                app:cardBackgroundColor="@color/input_background"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardElevation="0dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,14 +145,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Posso participar de palestras simultâneas?"
+                        android:text="@string/faq_q4"
                         android:textStyle="bold"
                         android:textColor="@color/cyan"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="As palestras principais são únicas, mas para os workshops simultâneos, a entrada é por ordem de chegada até a lotação da sala."
+                        android:text="@string/faq_a4"
                         android:textColor="#DDFFFFFF" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -151,9 +162,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/surface"
+                app:cardBackgroundColor="@color/input_background"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardElevation="0dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,14 +173,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Onde estacionar?"
+                        android:text="@string/faq_q5"
                         android:textStyle="bold"
                         android:textColor="@color/cyan"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="A Unicesumar oferece estacionamento gratuito para alunos no bloco 10, próximo ao auditório principal."
+                        android:text="@string/faq_a5"
                         android:textColor="#DDFFFFFF" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

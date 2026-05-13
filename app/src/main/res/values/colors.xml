@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#051937</color> <!-- Dark Navy from Image -->
-    <color name="primary_variant">#004d7a</color>
-    <color name="secondary">#00B4D8</color> <!-- Cyan Accent from Image -->
+    <color name="primary">#051937</color>
+    <color name="primary_variant">#0A2143</color>
+    <color name="secondary">#00B4D8</color>
     <color name="background">#051937</color>
-    <color name="surface">#0A1931</color>
+    <color name="surface">#0A2143</color>
     <color name="cyan">#00B4D8</color>
-    <color name="black">#202124</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray_text">#5F6368</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_text">#94A3B8</color>
+    <color name="input_background">#1A2C4A</color>
+
+    <!-- Navigation Colors -->
+    <color name="nav_unselected">#94A3B8</color>
+    <color name="nav_selected">#00B4D8</color>
+
+    <!-- Legacy compatibility -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="outline">#1A2C4A</color>
 </resources>
+

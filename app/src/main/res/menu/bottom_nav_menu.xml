@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@android:drawable/ic_menu_today"
-        android:title="Início" />
+        android:icon="@drawable/ic_home_24"
+        android:title="@string/nav_home" />
     <item
         android:id="@+id/nav_registration"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:title="Inscrição" />
+        android:icon="@drawable/ic_edit_24"
+        android:title="@string/nav_registration" />
     <item
         android:id="@+id/nav_presence"
-        android:icon="@android:drawable/ic_menu_mylocation"
-        android:title="Presença" />
+        android:icon="@drawable/ic_calendar_24"
+        android:title="@string/programacao_title" />
     <item
         android:id="@+id/nav_contact"
-        android:icon="@android:drawable/ic_menu_call"
-        android:title="Contato" />
+        android:icon="@drawable/ic_phone_24"
+        android:title="@string/nav_contact" />
+    <item
+        android:id="@+id/nav_admin"
+        android:icon="@drawable/ic_admin_24"
+        android:title="@string/nav_admin" />
 </menu>
