@@ -11,7 +11,7 @@ import com.heitor.week_tech.data.local.entity.Project;
 import com.heitor.week_tech.data.local.dao.SpeakerDao;
 import com.heitor.week_tech.data.local.entity.Speaker;
 
-@Database(entities = {Participant.class, Project.class, Speaker.class}, version = 2)
+@Database(entities = {Participant.class, Project.class, Speaker.class}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;
     public abstract ParticipantDao participantDao();

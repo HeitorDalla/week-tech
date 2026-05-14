@@ -11,12 +11,12 @@
         android:id="@+id/toolbarProject"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
         app:navigationIcon="?attr/homeAsUpIndicator"
+        app:navigationIconTint="@color/white"
         app:title="@string/nav_admin_projects"
         app:titleCentered="true"
-        android:background="@color/primary"
-        app:titleTextColor="@color/white"
-        app:navigationIconTint="@color/white" />
+        app:titleTextColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,10 +30,10 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_project_title"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:hint="@string/hint_project_title">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProjectTitle"
@@ -43,11 +43,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_project_description"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="12dp"
+                android:hint="@string/hint_project_description">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProjectDescription"
@@ -58,11 +58,39 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_project_author"
+                android:layout_marginTop="12dp"
+                android:hint="@string/hint_project_local">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProjectLocal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginTop="12dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/hint_project_horario">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProjectHorario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="time" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/hint_project_author">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProjectAuthor"
@@ -76,8 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/btn_submit"
                 android:backgroundTint="@color/cyan"
+                android:text="@string/btn_submit"
                 android:textColor="@color/primary"
                 android:textStyle="bold" />
 
@@ -85,4 +113,3 @@
     </ScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

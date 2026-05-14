@@ -21,7 +21,7 @@ public interface PalestraDao {
     @Delete
     void delete(Palestra palestra);
 
-    @Query("SELECT * FROM palestras")
+    @Query("SELECT * FROM palestras ORDER BY horario ASC")
     List<Palestra> getAll();
 
     @Query("SELECT * FROM palestras WHERE id = :id")

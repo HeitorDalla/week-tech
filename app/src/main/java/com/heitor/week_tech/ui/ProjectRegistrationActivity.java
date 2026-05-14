@@ -23,6 +23,8 @@ public class ProjectRegistrationActivity extends AppCompatActivity {
 
     private EditText etTitle;
     private EditText etDescription;
+    private EditText etLocal;
+    private EditText etHorario;
     private EditText etAuthor;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -36,39 +38,36 @@ public class ProjectRegistrationActivity extends AppCompatActivity {
 
         etTitle = findViewById(R.id.etProjectTitle);
         etDescription = findViewById(R.id.etProjectDescription);
+        etLocal = findViewById(R.id.etProjectLocal);
+        etHorario = findViewById(R.id.etProjectHorario);
         etAuthor = findViewById(R.id.etProjectAuthor);
         Button btnSubmit = findViewById(R.id.btnSubmitProject);
 
         btnSubmit.setOnClickListener(v -> {
             boolean valid = true;
-            if (TextUtils.isEmpty(etTitle.getText())) {
-                etTitle.setError(getString(R.string.error_required));
-                valid = false;
-            }
-            if (TextUtils.isEmpty(etAuthor.getText())) {
-                etAuthor.setError(getString(R.string.error_required));
-                valid = false;
-            }
+            valid &= validateRequired(etTitle);
+            valid &= validateRequired(etDescription);
+            valid &= validateRequired(etLocal);
+            valid &= validateRequired(etHorario);
+            valid &= validateRequired(etAuthor);
 
             if (!valid) {
                 Toast.makeText(this, R.string.form_invalid, Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Salva no banco usando executor
             String title = etTitle.getText().toString().trim();
-            String description = etDescription.getText() != null ? etDescription.getText().toString().trim() : "";
+            String description = etDescription.getText().toString().trim();
+            String local = etLocal.getText().toString().trim();
+            String horario = etHorario.getText().toString().trim();
             String author = etAuthor.getText().toString().trim();
-            Project project = new Project(title, description, author);
+            Project project = new Project(title, description, local, horario, author);
             executor.execute(() -> {
                 try {
                     AppDatabase.getInstance(getApplicationContext()).projectDao().insert(project);
                     runOnUiThread(() -> {
                         Toast.makeText(this, R.string.project_registered_success, Toast.LENGTH_SHORT).show();
-                        // opcional: finish() ou limpar campos
-                        etTitle.setText("");
-                        etDescription.setText("");
-                        etAuthor.setText("");
+                        clearForm();
                     });
                 } catch (Exception e) {
                     runOnUiThread(() -> Toast.makeText(this, "Erro ao salvar projeto", Toast.LENGTH_SHORT).show());
@@ -77,11 +76,27 @@ public class ProjectRegistrationActivity extends AppCompatActivity {
         });
     }
 
+    private void clearForm() {
+        etTitle.setText("");
+        etDescription.setText("");
+        etLocal.setText("");
+        etHorario.setText("");
+        etAuthor.setText("");
+    }
+
+    private boolean validateRequired(EditText field) {
+        String value = field.getText() != null ? field.getText().toString().trim() : "";
+        if (TextUtils.isEmpty(value)) {
+            field.setError(getString(R.string.error_required));
+            return false;
+        }
+        field.setError(null);
+        return true;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         executor.shutdown();
     }
 }
-
-

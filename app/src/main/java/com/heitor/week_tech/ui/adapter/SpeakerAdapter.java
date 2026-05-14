@@ -34,6 +34,13 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.ViewHold
         Speaker s = speakers.get(position);
         holder.tvName.setText(s.getName());
         holder.tvCompany.setText(s.getCompany());
+        // topic is optional; show when available
+        if (s.getTopic() != null && !s.getTopic().trim().isEmpty()) {
+            holder.tvTopic.setText(s.getTopic());
+            holder.tvTopic.setVisibility(android.view.View.VISIBLE);
+        } else {
+            holder.tvTopic.setVisibility(android.view.View.GONE);
+        }
         holder.tvBio.setText(s.getBio());
     }
 
@@ -41,11 +48,12 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.ViewHold
     public int getItemCount() { return speakers.size(); }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvCompany, tvBio;
+        TextView tvName, tvCompany, tvBio, tvTopic;
         public ViewHolder(View v) {
             super(v);
             tvName = v.findViewById(R.id.tvSpeakerName);
             tvCompany = v.findViewById(R.id.tvSpeakerCompany);
+            tvTopic = v.findViewById(R.id.tvSpeakerTopic);
             tvBio = v.findViewById(R.id.tvSpeakerBio);
         }
     }

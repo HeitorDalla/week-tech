@@ -72,6 +72,7 @@
     <string name="schedule_4_title">Networking &amp; Encerramento</string>
     <string name="schedule_4_speaker">Todos os Participantes</string>
     <string name="schedule_4_place">Foyer Principal</string>
+    <string name="schedule_empty">Nenhum projeto cadastrado no momento.</string>
     <string name="faq_title">Dúvidas Frequentes (FAQ)</string>
     <string name="faq_q1">Como obtenho meu certificado?</string>
     <string name="faq_a1">Os certificados serão enviados automaticamente para o e-mail cadastrado em até 7 dias úteis após o encerramento do evento.</string>
@@ -100,10 +101,16 @@
     <!-- Novas strings para telas de cadastro -->
     <string name="hint_project_title">Título do Projeto</string>
     <string name="hint_project_description">Descrição</string>
+    <string name="hint_project_local">Local</string>
+    <string name="hint_project_horario">Horário</string>
     <string name="hint_project_author">Autor/Equipe</string>
     <string name="hint_speaker_name">Nome do Palestrante</string>
     <string name="hint_speaker_bio">Mini biografia</string>
     <string name="hint_speaker_company">Empresa / Instituição</string>
+    <string name="hint_speaker_topic">Título / Tema da Palestra</string>
+    <string name="hint_speaker_duration">Duração / Horário (opcional)</string>
+    <string name="hint_speaker_link">Link (LinkedIn/Twitter/Site)</string>
+    <string name="hint_speaker_photo">URL da Foto (opcional)</string>
     <string name="btn_submit">Enviar</string>
     <string name="project_registered_success">Projeto cadastrado com sucesso.</string>
     <string name="speaker_registered_success">Palestrante cadastrado com sucesso.</string>
@@ -115,4 +122,5 @@
     <string name="speakers_title">Palestrantes</string>
     <string name="speakers_subtitle">Conheça os especialistas e líderes do setor que compartilharão suas visões sobre o futuro da tecnologia corporativa.</string>
     <string name="lecture_topic">Tema da Palestra</string>
+    <string name="schedule_time_label">HORÁRIO</string>
 </resources>

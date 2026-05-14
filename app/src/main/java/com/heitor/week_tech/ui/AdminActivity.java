@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.heitor.week_tech.R;
 import com.heitor.week_tech.data.local.database.AppDatabase;
 import com.heitor.week_tech.data.local.entity.Participant;
+import com.heitor.week_tech.ui.adapter.ParticipantAdapter;
 import com.heitor.week_tech.ui.adapter.ProjectAdapter;
 import com.heitor.week_tech.ui.adapter.SpeakerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,14 +29,16 @@ import java.util.concurrent.Executors;
 public class AdminActivity extends AppCompatActivity {
 
     private static final String TAG = "AdminActivity";
+    private ParticipantAdapter participantAdapter;
     private ProjectAdapter projectAdapter;
     private SpeakerAdapter speakerAdapter;
     private TextView tvTotalInscriptions;
     private TextView tvTotalCoffee;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-    private static final int TAB_PROJECTS = 0;
-    private static final int TAB_SPEAKERS = 1;
-    private int currentTab = TAB_PROJECTS;
+    private static final int TAB_PARTICIPANTS = 0;
+    private static final int TAB_PROJECTS = 1;
+    private static final int TAB_SPEAKERS = 2;
+    private int currentTab = TAB_PARTICIPANTS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,27 +52,32 @@ public class AdminActivity extends AppCompatActivity {
         tvTotalCoffee = findViewById(R.id.tvTotalCoffee);
         RecyclerView rvParticipants = findViewById(R.id.rvParticipants);
         rvParticipants.setLayoutManager(new LinearLayoutManager(this));
+        participantAdapter = new ParticipantAdapter();
         projectAdapter = new ProjectAdapter();
         speakerAdapter = new SpeakerAdapter();
-        rvParticipants.setAdapter(projectAdapter);
+        rvParticipants.setAdapter(participantAdapter);
 
         Button btnExitAdmin = findViewById(R.id.btnExitAdmin);
         BottomNavigationView adminBottomNavigation = findViewById(R.id.adminBottomNavigation);
-        adminBottomNavigation.setSelectedItemId(R.id.nav_admin_projects);
+        adminBottomNavigation.setSelectedItemId(R.id.nav_admin_participants);
         FloatingActionButton fabAdd = findViewById(R.id.fabAdd);
         adminBottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.nav_admin_projects) {
-                currentTab = TAB_PROJECTS;
-                loadProjects();
+            if (id == R.id.nav_admin_participants) {
+                currentTab = TAB_PARTICIPANTS;
+                loadParticipants();
                 return true;
+            } else if (id == R.id.nav_admin_projects) {
+                // Abre a tela de cadastro de projetos diretamente
+                startActivity(new android.content.Intent(this, ProjectRegistrationActivity.class));
+                return false;
             } else if (id == R.id.nav_admin_speakers) {
-                currentTab = TAB_SPEAKERS;
-                loadSpeakers();
-                return true;
+                // Abre a tela de cadastro de palestrantes diretamente
+                startActivity(new android.content.Intent(this, SpeakerRegistrationActivity.class));
+                return false;
             }
-            currentTab = TAB_PROJECTS;
-            loadProjects();
+            currentTab = TAB_PARTICIPANTS;
+            loadParticipants();
             return true;
         });
 
@@ -87,16 +95,15 @@ public class AdminActivity extends AppCompatActivity {
         btnExitAdmin.setOnClickListener(v -> finish());
 
         loadDashboardStats();
-        loadProjects();
+        loadParticipants();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Recarrega de acordo com a aba atual
+        // Mantem dashboard e lista de participantes sempre atualizados ao voltar dos cadastros
         loadDashboardStats();
-        if (currentTab == TAB_PROJECTS) loadProjects();
-        else loadSpeakers();
+        loadParticipants();
     }
 
     private void loadDashboardStats() {
@@ -109,6 +116,25 @@ public class AdminActivity extends AppCompatActivity {
                     tvTotalInscriptions.setText(getString(R.string.total_participants, participants.size()));
                     long coffeeCount = participants.stream().filter(Participant::isCoffeeBreak).count();
                     tvTotalCoffee.setText(getString(R.string.admin_coffee_confirmed, coffeeCount));
+                });
+            } catch (Exception e) {
+                Log.e(TAG, "Erro ao carregar participantes", e);
+            }
+        });
+    }
+
+    private void loadParticipants() {
+        Log.d(TAG, "Carregando lista de participantes...");
+        executorService.execute(() -> {
+            try {
+                var participants = AppDatabase.getInstance(this).participantDao().getAllParticipants();
+                Log.d(TAG, "Participantes carregados para listagem: " + participants.size());
+                runOnUiThread(() -> {
+                    TextView tvListTitle = findViewById(R.id.tvListTitle);
+                    tvListTitle.setText(getString(R.string.admin_list));
+                    RecyclerView rv = findViewById(R.id.rvParticipants);
+                    rv.setAdapter(participantAdapter);
+                    participantAdapter.setParticipants(participants);
                 });
             } catch (Exception e) {
                 Log.e(TAG, "Erro ao carregar participantes", e);

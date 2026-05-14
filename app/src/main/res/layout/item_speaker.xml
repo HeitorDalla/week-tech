@@ -76,13 +76,22 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvSpeakerTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            tools:text="Futuro das Redes Neurais" />
+
+        <TextView
             android:id="@+id/tvSpeakerBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="@color/white"
             android:textSize="15sp"
-            tools:text="O Futuro das Redes Neurais e Aplicações Práticas em Enterprise" />
+            tools:text="Mini biografia: Engenheira com experiência em modelos de ML aplicados a negócios." />
 
     </LinearLayout>
 

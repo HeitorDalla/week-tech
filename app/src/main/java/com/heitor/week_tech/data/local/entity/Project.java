@@ -9,11 +9,15 @@ public class Project {
     private int id;
     private String title;
     private String description;
+    private String local;
+    private String horario;
     private String author;
 
-    public Project(String title, String description, String author) {
+    public Project(String title, String description, String local, String horario, String author) {
         this.title = title;
         this.description = description;
+        this.local = local;
+        this.horario = horario;
         this.author = author;
     }
 
@@ -23,7 +27,10 @@ public class Project {
     public void setTitle(String title) { this.title = title; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+    public String getLocal() { return local; }
+    public void setLocal(String local) { this.local = local; }
+    public String getHorario() { return horario; }
+    public void setHorario(String horario) { this.horario = horario; }
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
 }
-

@@ -11,7 +11,6 @@ public interface ProjectDao {
     @Insert
     void insert(Project project);
 
-    @Query("SELECT * FROM projects ORDER BY title ASC")
+    @Query("SELECT * FROM projects ORDER BY horario ASC, title ASC")
     List<Project> getAllProjects();
 }
-
