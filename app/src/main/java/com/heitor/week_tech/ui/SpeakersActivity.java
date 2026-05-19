@@ -13,6 +13,10 @@ import com.heitor.week_tech.ui.adapter.SpeakerAdapter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Tela que lista os palestrantes cadastrados no banco local.
+ * Também mantém a navegação inferior igual às outras telas do app.
+ */
 public class SpeakersActivity extends AppCompatActivity {
 
     private SpeakerAdapter adapter;
@@ -23,12 +27,14 @@ public class SpeakersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speakers);
 
+        // Configura a barra superior, a lista e a navegação inferior.
         setupToolbar();
         setupRecyclerView();
         setupBottomNavigation();
         loadSpeakers();
     }
 
+    // Configura o título da tela e a ação de voltar.
     private void setupToolbar() {
         MaterialToolbar toolbar = findViewById(R.id.include_header);
         if (toolbar != null) {
@@ -37,6 +43,7 @@ public class SpeakersActivity extends AppCompatActivity {
         }
     }
 
+    // Prepara a RecyclerView que exibe os palestrantes.
     private void setupRecyclerView() {
         RecyclerView rvSpeakers = findViewById(R.id.rvSpeakers);
         rvSpeakers.setLayoutManager(new LinearLayoutManager(this));
@@ -44,6 +51,7 @@ public class SpeakersActivity extends AppCompatActivity {
         rvSpeakers.setAdapter(adapter);
     }
 
+    // Busca os palestrantes no banco em uma thread de fundo.
     private void loadSpeakers() {
         executor.execute(() -> {
             var speakers = AppDatabase.getInstance(this).speakerDao().getAllSpeakers();
@@ -51,6 +59,7 @@ public class SpeakersActivity extends AppCompatActivity {
         });
     }
 
+    // Navegação inferior usada para trocar de módulo sem recriar lógica de tela.
     private void setupBottomNavigation() {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
         if (bottomNav != null) {

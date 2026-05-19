@@ -3,10 +3,15 @@ package com.heitor.week_tech.data.local.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Entidade do Room que representa um projeto cadastrado para a programação.
+ */
 @Entity(tableName = "projects")
 public class Project {
+    // Identificador gerado automaticamente.
     @PrimaryKey(autoGenerate = true)
     private int id;
+    // Campos exibidos no evento e no painel administrativo.
     private String title;
     private String description;
     private String local;

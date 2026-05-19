@@ -3,16 +3,22 @@ package com.heitor.week_tech.data.local.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Entidade do Room que representa um participante cadastrado no evento.
+ */
 @Entity(tableName = "participants")
 public class Participant {
+    // Chave primária gerada automaticamente pelo Room.
     @PrimaryKey(autoGenerate = true)
     private int id;
+    // Dados básicos usados no cadastro e na listagem administrativa.
     private String name;
     private String email;
     private String cpf;
     private String phone;
     private String course;
     private String period;
+    // Indica se o participante deseja Coffee Break.
     private boolean coffeeBreak;
 
     public Participant(String name, String email, String cpf, String phone, String course, String period, boolean coffeeBreak) {

@@ -7,6 +7,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.heitor.week_tech.R;
 
+/**
+ * Tela de contato e suporte do evento.
+ * Centraliza informações de apoio, localização e acesso ao FAQ.
+ */
 public class ContactActivity extends AppCompatActivity {
 
     @Override
@@ -14,10 +18,12 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
+        // Toolbar com ação de voltar para a tela anterior.
         MaterialToolbar toolbar = findViewById(R.id.toolbarContact);
         // Fix para a seta de voltar: encerra a activity atual e volta para a anterior
         toolbar.setNavigationOnClickListener(this::closeScreen);
 
+        // Barra inferior para alternar entre as áreas principais do app.
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
         bottomNav.setSelectedItemId(R.id.nav_contact);
         bottomNav.setOnItemSelectedListener(item -> {
@@ -44,11 +50,13 @@ public class ContactActivity extends AppCompatActivity {
             return true;
         });
 
+        // Botão que leva para a lista de perguntas frequentes.
         findViewById(R.id.btnFaq).setOnClickListener(v -> {
             startActivity(new Intent(this, FaqActivity.class));
         });
     }
 
+    // Fecha a tela atual e retorna para a anterior.
     private void closeScreen(android.view.View view) {
         finish();
     }

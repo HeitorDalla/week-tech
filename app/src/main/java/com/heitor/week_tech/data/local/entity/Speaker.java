@@ -4,10 +4,15 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+/**
+ * Entidade do Room que representa um palestrante cadastrado no sistema.
+ */
 @Entity(tableName = "speakers")
 public class Speaker {
+    // Identificador principal da tabela.
     @PrimaryKey(autoGenerate = true)
     private int id;
+    // Informações pessoais e profissionais do palestrante.
     private String name;
     private String bio;
     private String company;
@@ -18,10 +23,10 @@ public class Speaker {
     private String duration;
     private String photoUrl;
 
-    // No-arg constructor required by Room
+    // Construtor vazio exigido pelo Room para criação automática do objeto.
     public Speaker() {}
 
-    // Convenience constructor (ignored by Room)
+    // Construtor de conveniência, ignorado pelo Room.
     @Ignore
     public Speaker(String name, String bio, String company) {
         this.name = name;
@@ -29,7 +34,7 @@ public class Speaker {
         this.company = company;
     }
 
-    // Full constructor for use in code
+    // Construtor completo usado no cadastro manual pelo app.
     @Ignore
     public Speaker(String name, String bio, String company, String email, String phone, String link, String topic, String duration, String photoUrl) {
         this.name = name;

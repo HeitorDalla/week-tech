@@ -3,12 +3,16 @@ package com.heitor.week_tech.data.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Modelo que representa um patrocinador do evento.
+ */
 @Entity(tableName = "patrocinadores")
 public class Patrocinador {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String nome;
-    private String logoUrl; // Para exibir a imagem do patrocinador
+    // URL ou caminho da logo usada na listagem.
+    private String logoUrl;
     private String linkSite;
 
     public Patrocinador() {}
