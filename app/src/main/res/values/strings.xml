@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Week Tech</string>
     <string name="hashtag_week_tech">#WEEK TECH</string>
-    <string name="location_maringa">MARINGÁ</string>
+    <string name="location_maringa">LONDRINA</string>
     <string name="main_title">WEEK\nTECH.</string>
-    <string name="event_date">24 A 27\nDE JUN</string>
+    <string name="event_date">01, 02, 03\nDE JUNHO</string>
     <string name="event_divider">//</string>
     <string name="event_description">Uma semana dedicada à inovação e ao empreendedorismo digital, com eventos abertos ao público promovidos pelas principais iniciativas da capital mineira.</string>
     <string name="check_schedule">Confira a programação completa</string>
@@ -51,7 +51,7 @@
     <string name="support_email_label">Email para Suporte</string>
     <string name="support_email">suporte@weektech.com.br</string>
     <string name="location_label">Localização</string>
-    <string name="location_address">Maringá, PR - Brasil</string>
+    <string name="location_address">Londrina, PR - Brasil</string>
     <string name="presence_header">REGISTRO DE PRESENÇA</string>
     <string name="presence_instruction">Escaneie o QR Code no auditório</string>
     <string name="programacao_screen_title">Programação</string>
